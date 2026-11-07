@@ -61,7 +61,7 @@ function is_bot($user_agent) {
 // Filter clicks from bots
 yourls_add_filter('shunt_log_redirect', 'exclude_bots_from_click_log');
 function exclude_bots_from_click_log($false, $keyword) {
-    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? ''; 
     if (is_bot($user_agent)) {
         // Return true to shunt (skip) logging
         return true;
@@ -70,3 +70,4 @@ function exclude_bots_from_click_log($false, $keyword) {
     return false;
 }
 ?>
+
